@@ -1,9 +1,11 @@
 package com.fiap.chat.service;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
 import com.fiap.chat.entity.Message;
 
-public interface MessageService extends JpaRepository<Message, Long>{
-
+public interface MessageService {
+	public Message createOrUpdate(Message m);
+	public void delete(Long id);
+	public List<Message> findByUserConv(Long userConvId);
 }

@@ -7,23 +7,25 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.Data;
 
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 @Entity
 @Table(name = "tb_message")
 public class Message {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	@NotBlank(message = "Mensagem nao pode ser enviada em branco")
+	@NotNull(message = "Obrigatorio informar a mensagem")
 	private String text;
 	private LocalDate data;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private UserConversation userConversation;
 }
