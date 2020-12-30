@@ -1,8 +1,9 @@
 package com.fiap.chat.entity;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,18 +11,19 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
+import lombok.Data;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 @Table(name = "tb_conversation")
 public class Conversation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	@Column(name = "conversation_id")
+	private Long id;	
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	List<User> users;
-}
+	private String title;
+}	

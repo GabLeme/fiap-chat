@@ -42,10 +42,10 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
 
-//	@PostMapping("/user/login")
-//	public ResponseEntity login(@RequestBody LoginDTO login) {
-//		return this.userService.login(login);
-//	}
+	@PostMapping("/user/login")
+	public ResponseEntity<User> login(@RequestBody LoginDTO login) {
+		return ResponseEntity.ok(this.userService.login(login));
+	}
 
 	@GetMapping("/user/{id}")
 	public User findById(@PathVariable(name = "id") Long id) {
