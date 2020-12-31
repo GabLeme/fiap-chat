@@ -1,26 +1,22 @@
 package com.fiap.chat.entity;
 
 import java.time.LocalDateTime;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-//import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.Valid;
-
 import lombok.Data;
 
 @Entity
 @Data
 @Table(name="tb_activity")
 public class Activity {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="act_ID")
@@ -35,10 +31,8 @@ public class Activity {
 	@Column(name="datetime")
 	private LocalDateTime datetime;
 	
-	@ManyToOne(cascade = CascadeType.ALL)//,  orphanRemoval=true)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="cal_ID")
 	private Calendar calendar;
-	
-	
 	
 }
