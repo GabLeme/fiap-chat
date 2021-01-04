@@ -35,7 +35,7 @@ public class UserRepositoryTest {
 		Login login = new Login();
 		login.setEmail("outroteste@email.com");
 		login.setPassword("12345678");
-		u.setCpf("48606719889");
+		u.setCpf("");
 		u.setLogin(login);
 
 		
