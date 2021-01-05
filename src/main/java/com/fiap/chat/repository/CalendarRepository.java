@@ -10,7 +10,7 @@ import com.fiap.chat.entity.Calendar;
 @Repository
 public interface CalendarRepository extends JpaRepository<Calendar, Long> {
 	
-	@Query("select c from Calendar c where c.user.id = :userId")
+	@Query("from Calendar c where c.user.id = :userId")
 	public Calendar findByUserId(@Param("userId") Long userID);
 
 }

@@ -1,6 +1,7 @@
 package com.fiap.chat.entity;
 
 
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,11 +12,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-//import javax.persistence.JoinTable;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 //import com.fasterxml.jackson.annotation.JsonProperty;
 //import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -27,35 +34,32 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name="tb_calendar")
-public class Calendar{
+@Table(name="tb_calendar", uniqueConstraints = @UniqueConstraint(columnNames = {"user_id"} ))
+public class Calendar implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	//@Id
+	//@SequenceGenerator(name = "calendar", sequenceName = "sq_calendar", allocationSize = 1)
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="calendar")
 	@Id
-	@SequenceGenerator(name = "calendar", sequenceName = "sq_calendar", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="calendar")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id_cal")
 	private Long id;
 	
-	//@Column(name="cal_nome")
-	//private String descricao;
-	
-	//@OneToMany//(cascade = CascadeType.ALL)
-	//@JoinTable(joinColumns=@JoinColumn(name="id_cal"), name="tb_diasNaoUteis") //LocalDate
-	//@Type(type="JSON")
-	//@OneToMany(cascade = CascadeType.ALL)
-	//@JsonProperty(access = Access.WRITE_ONLY)
-	//@Column(name="diasNaoUteis")//, columnDefinition = "JSON")
-	//private LocalDate diasNaoUteis; //List<LocalDate>
-	@Embedded
-	@Column(name="cal_diasNaoUteis")
-	private List<String> diasNaoUteis;
+	@OneToMany//(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_diasNaoUteis")
+	private List<NonWorkingDays> diasNaoUteis;
 	
 	@OneToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@JoinColumn(name = "user_id")
 	private User user;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "act_id")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "calendar" )//(cascade = CascadeType.MERGE)//@JoinColumn(name = "act_id")
 	private List<Activity> activity;
 	
 
