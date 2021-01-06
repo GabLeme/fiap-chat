@@ -14,15 +14,16 @@ public class CalendarServiceImpl implements CalendarService {
 	private CalendarRepository repo;
 	
 	@Override
-	public Calendar createOrUpdate(Calendar c) {
+	public Calendar createOrUpdate(Calendar c) throws Exception {
+		if(repo.existsByUser(c.getUser())) {
+	        throw new Exception("Já existe calendário cadastrado para esse usuário.");
+	    }
 		return repo.save(c);
 	}
 	
 	@Override
 	public Calendar getCalendarByUserID(Long userID) {
 		return this.repo.findByUserId(userID);
-		//return repo.findById(userID).get();//.findAll()
-				//findById(userID).get();
 	}
 	
 }

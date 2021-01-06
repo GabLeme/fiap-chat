@@ -16,5 +16,10 @@ public class ActivityServiceImpl implements ActivityService {
 	public Activity createOrUpdate(Activity a) {
 		return repo.save(a);
 	}
+	
+	@Override
+	public void delete(Long id) {
+		this.repo.deleteById(id);
+	}
 
 }
