@@ -2,6 +2,7 @@ package com.fiap.chat.entity;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -37,5 +38,5 @@ public class UserConversation {
 	private LocalDateTime createdAt;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "userConversation")
-	private Set<Message> messages;
+	private List<Message> messages;
 }
