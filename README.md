@@ -77,7 +77,7 @@ password: password
         "errors": []
     }
    ```  
-   #### 2. Buscar: GET - localhost:8080/chat/v1/user/{id}
+   #### 2. Buscar: GET - http://localhost:8080/chat/v1/user/{id}
    ##### Response:    
    * 200 : OK
    ```json
@@ -117,12 +117,12 @@ password: password
         "errors": []
     }
    ```  
-   #### 4. Deletar: GET - localhost:8080/chat/v1/user/{id}
+   #### 4. Deletar: GET - http://localhost:8080/chat/v1/user/{id}
    ##### Response:    
    * 204 : No Content
    
    ### Calendário
-   #### 1. Criar: POST - localhost:8080/chat/v1/calendar
+   #### 1. Criar: POST - http://localhost:8080/chat/v1/calendar
    ##### Body Request:  
    ```json
     {
@@ -150,7 +150,7 @@ password: password
     
    `"message": "Já existe calendário cadastrado para esse usuário."`
    
-   #### 2. Buscar: GET - localhost:8080/chat/v1/calendar/findByUserId?userID=1
+   #### 2. Buscar: GET - http://localhost:8080/chat/v1/calendar/findByUserId?userID=1
    ##### Response:  
    * 200 : OK
    ```json
@@ -200,7 +200,7 @@ password: password
     }
    ```  
    ### Atividade
-   #### 1. Criar: POST - localhost:8080/chat/v1/activity
+   #### 1. Criar: POST - http://localhost:8080/chat/v1/activity
    ##### Body Request:  
    ```json
     {
@@ -227,7 +227,7 @@ password: password
       "errors": []
     }
    ```  
-   #### 2. Atualizar: POST - localhost:8080/chat/v1/activity
+   #### 2. Atualizar: POST - http://localhost:8080/chat/v1/activity
    ##### Body Request:  
    ```json
     {
@@ -255,12 +255,12 @@ password: password
       "errors": []
     }
    ```  
-   #### 3. Deletar: GET - localhost:8080/chat/v1/activity/{id}
+   #### 3. Deletar: GET - http://localhost:8080/chat/v1/activity/{id}
    ##### Response:    
    * 204 : No Content
    
    ### Dia Não Útil
-   #### 1. Criar: POST - localhost:8080/chat/v1/dianaoutil
+   #### 1. Criar: POST - http://localhost:8080/chat/v1/dianaoutil
    ##### Body Request:  
    ```json
     {
@@ -284,7 +284,7 @@ password: password
    * 500 : Internal Server Error    
    `"message": "Dia não util já cadastrado."`
    
-   #### 2. Atualizar: POST - localhost:8080/chat/v1/activity
+   #### 2. Atualizar: POST - http://localhost:8080/chat/v1/activity
    ##### Body Request:  
    ```json
     {
@@ -309,6 +309,6 @@ password: password
    * 500 : Internal Server Error    
    `"message": "Dia não util já cadastrado."`
    
-   #### 3. Deletar: GET - localhost:8080/chat/v1/dianaoutil/{id}
+   #### 3. Deletar: GET - http://localhost:8080/chat/v1/dianaoutil/{id}
    ##### Response:    
    * 204 : No Content
