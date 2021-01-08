@@ -28,8 +28,11 @@ public class CalendarRepositoryTest {
 	
 	@Autowired
 	UserRepository userRepository;
+	@Autowired
 	CalendarRepository calendarRepository;
+	@Autowired
 	ActivityRepository activityRepository;
+	@Autowired
 	NonWorkingDayRepository nonWorkingDayRepository;
 	
 	@BeforeEach
@@ -51,8 +54,10 @@ public class CalendarRepositoryTest {
 	
 	@AfterEach
 	public void tearDown() {
-		userRepository.deleteAll();
+		nonWorkingDayRepository.deleteAll();
+		activityRepository.deleteAll();
 		calendarRepository.deleteAll();
+		userRepository.deleteAll();		
 	}
 	
 	@Test
