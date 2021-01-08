@@ -23,7 +23,6 @@ import lombok.Data;
 public class UserConversation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@JsonProperty(access = Access.WRITE_ONLY)
 	private Long id;
 	
 	@ManyToOne

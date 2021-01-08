@@ -27,13 +27,13 @@ public class MessageController {
 	@Autowired
 	private MessageService service;
 	
-	@DeleteMapping("/message/{userConversationId}")
-	public ResponseEntity deleteMessage(@PathVariable(name = "userConversationId") Long id) {
+	@DeleteMapping("/message/{messageId}")
+	public ResponseEntity deleteMessage(@PathVariable(name = "messageId") Long id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
-	@GetMapping("/message/userConversationId")
+	@GetMapping("/message/{userConversationId}")
 	public List<Message> findByUserConversationId(@PathVariable(name = "userConversationId") Long id) {
 		return this.service.findByUserConv(id);
 	}
