@@ -1,0 +1,430 @@
+{
+	"info": {
+		"_postman_id": "f1f19dda-830f-4a6e-b4bb-9cdfb4c82b6f",
+		"name": "Fiap - Atividade 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Criar Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cpf\": \"06427429604\",\r\n    \"login\": {\r\n        \"email\": \"gabriel.leme@outlook.com\",\r\n        \"password\": \"12345678\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/chat/v1/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/chat/v1/user/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat",
+								"v1",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/chat/v1/user/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat",
+								"v1",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Calendar",
+			"item": [
+				{
+					"name": "Criar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"user\": {\r\n        \"id\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/chat/v1/calendar",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat",
+								"v1",
+								"calendar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Calendar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/chat/v1/calendar/findByUserId?userID=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat",
+								"v1",
+								"calendar",
+								"findByUserId"
+							],
+							"query": [
+								{
+									"key": "userID",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Activity",
+			"item": [
+				{
+					"name": "Criar Activity",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 11,\r\n    \"titulo\": \"Daily\",\r\n    \"descricao\": \"Reunião\",\r\n    \"dt_inicio\": \"2021-01-14T12:00:00.00\",\r\n    \"dt_fim\": \"2021-01-14T13:00\",\r\n    \"calendar\": {\r\n        \"id\": 2      \r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/chat/v1/activity",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat",
+								"v1",
+								"activity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Activity Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/chat/v1/activity/10",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat",
+								"v1",
+								"activity",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dia Não Util",
+			"item": [
+				{
+					"name": "Criar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"diaNaoUtil\":\"2021-04-25\",\r\n     \"calendar\": {\r\n        \"id\": 2     \r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/chat/v1/dianaoutil",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat",
+								"v1",
+								"dianaoutil"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/chat/v1/dianaoutil/14",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat",
+								"v1",
+								"dianaoutil",
+								"14"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Conversation",
+			"item": [
+				{
+					"name": "Cria conversa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"id\": \"1\",\r\n   \"title\": \"Grupao do Zap!!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/chat/v1/conversations",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat",
+								"v1",
+								"conversations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca conversas por usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/chat/v1/conversations/chat/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat",
+								"v1",
+								"conversations",
+								"chat",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UserConversation",
+			"item": [
+				{
+					"name": "Adiciona N usuarios a N conversas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {\r\n        \"id\": 1,\r\n        \"login\": {\r\n            \"email\": \"gabriel.leme@outlook.com\",\r\n            \"password\": \"12345678\"\r\n        },\r\n        \"cpf\": \"06427429604\"\r\n    },\r\n    \"conversation\": {\r\n        \"id\": \"2\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/chat/v1/conversations/chat",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat",
+								"v1",
+								"conversations",
+								"chat"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Message",
+			"item": [
+				{
+					"name": "Cria mensagem",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"text\": \"Ola fulano!!\",\r\n    \"data\": \"2020-02-10\",\r\n    \"userConversation\": {\r\n        \"id\": 3\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/chat/v1/message",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat",
+								"v1",
+								"message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca mensagens da conversa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/chat/v1/message/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat",
+								"v1",
+								"message",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deleta mensagem",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/chat/v1/message/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"chat",
+								"v1",
+								"message",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,35 +1,42 @@
 package com.fiap.chat.entity;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import lombok.Data;
 
-@Data
 @Entity
-@Table(name = "tb_message")
-public class Message {
+@Data
+public class UserConversation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@NotBlank(message = "Mensagem nao pode ser enviada em branco")
-	@NotNull(message = "Obrigatorio informar a mensagem")
-	private String text;
-	private LocalDate data;
 	
+	@ManyToOne
 	@JsonProperty(access = Access.WRITE_ONLY)
-	@ManyToOne(fetch = FetchType.LAZY)
-	private UserConversation userConversation;
+	@JoinColumn(name = "user_id")
+	private User user;
+
+	@ManyToOne
+	@JoinColumn(name = "conversation_id")
+	private Conversation conversation;
+	
+	private LocalDateTime createdAt;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "userConversation")
+	private List<Message> messages;
 }

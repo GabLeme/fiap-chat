@@ -12,50 +12,40 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fiap.chat.dto.LoginDTO;
 import com.fiap.chat.dto.Response;
-import com.fiap.chat.entity.User;
-import com.fiap.chat.service.UserService;
+import com.fiap.chat.entity.Calendar;
+import com.fiap.chat.entity.NonWorkingDay;
+import com.fiap.chat.service.NonWorkingDayService;
 
 @RestController
 @RequestMapping("/chat/v1")
-public class UserController {
-
+public class NonWorkingDayController {
 	@Autowired
-	private UserService userService;
-
-	@PostMapping("/user")
-	public ResponseEntity<Response<User>> createOrUpdate(@Valid @RequestBody User user, BindingResult result) {
-		Response<User> response = new Response<User>();
+	private NonWorkingDayService nonWorkingDayService;
+	
+	@PostMapping("/dianaoutil")
+	public ResponseEntity<Response<NonWorkingDay>> createOrUpdate(@Valid @RequestBody NonWorkingDay diaNaoUtil, BindingResult result) throws Exception {
+		Response<NonWorkingDay> response = new Response<NonWorkingDay>();
 
 		if (result.hasErrors()) {
 			result.getAllErrors().forEach(e -> response.getErrors().add(e.getDefaultMessage()));
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
 		}
 
-		User userSave = userService.createOrUpdate(user);
+		NonWorkingDay nonWorkingDaySave  = nonWorkingDayService.createOrUpdate(diaNaoUtil);
 
-		response.setData(userSave);
+		response.setData(nonWorkingDaySave);
 
 		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
-
-	@PostMapping("/user/login")
-	public ResponseEntity<User> login(@RequestBody LoginDTO login) {
-		return ResponseEntity.ok(this.userService.login(login));
-	}
-
-	@GetMapping("/user/{id}")
-	public User findById(@PathVariable(name = "id") Long id) {
-		return this.userService.findById(id);
-	}
-
-	@DeleteMapping("/user/{id}")
+	
+	@DeleteMapping("/dianaoutil/{id}")
 	public ResponseEntity deleteById(@PathVariable(name = "id") Long id) {
-		this.userService.delete(id);
+		this.nonWorkingDayService.delete(id);
 		return ResponseEntity.noContent().build();
 	}
-
+	
 }
