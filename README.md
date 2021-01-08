@@ -284,7 +284,7 @@ password: password
    * 500 : Internal Server Error    
    `"message": "Dia não util já cadastrado."`
    
-   #### 2. Atualizar: POST - http://localhost:8080/chat/v1/activity
+   #### 2. Atualizar: POST - http://localhost:8080/chat/v1/dianaoutil
    ##### Body Request:  
    ```json
     {
