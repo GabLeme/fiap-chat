@@ -45,8 +45,8 @@ Console do h2:
 http://localhost:8080/h2-console/
 
 JDBC URL: jdbc:h2:mem:testdb  
-user:sa   
-password:password
+user: sa   
+password: password
 
 ## :memo: Contrato API
   Veja arquivo collection: Fiap - Atividade 1.postman_collection.json 
