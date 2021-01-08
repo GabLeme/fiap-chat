@@ -20,7 +20,7 @@ classes e persistência de dados. No projeto contém operações que incluam cad
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-- [Java](https://developer.amazon.com/)
+- [Java](https://www.java.com/pt-BR/)
 - [Spring](https://spring.io/)
 - [Maven](https://maven.apache.org/what-is-maven.html)
 - [JRE 8u271](https://www.oracle.com/br/java/technologies/javase-jre8-downloads.html)
